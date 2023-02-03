@@ -23,7 +23,7 @@ class NamedReturnValuesChecker extends BaseChecker {
       if (!parameter.name) {
         this.error(
           node,
-          `Return value in function '${node.name}' must be named`
+          `Return value '${parameter.typeName.name}' in function '${node.name}' must be named`
         );
       }
     });
