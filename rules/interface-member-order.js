@@ -21,6 +21,7 @@ class InterfaceMemberOrderChecker extends BaseChecker {
   ContractDefinition(node) {
     if (node.kind !== 'interface') return;
     const interfaceMembers = node.subNodes;
+    const unOrderedMembers = [];
     const events = [];
     const errors = [];
     const structs = [];
@@ -29,15 +30,19 @@ class InterfaceMemberOrderChecker extends BaseChecker {
     interfaceMembers.forEach(member => {
       switch (member.type) {
         case 'EventDefinition':
+          unOrderedMembers.push(member);
           events.push(member);
           break;
         case 'CustomErrorDefinition':
+          unOrderedMembers.push(member);
           errors.push(member);
           break;
         case 'StructDefinition':
+          unOrderedMembers.push(member);
           structs.push(member);
           break;
         case 'FunctionDefinition':
+          unOrderedMembers.push(member);
           functions.push(member);
           break;
         default:
@@ -46,8 +51,8 @@ class InterfaceMemberOrderChecker extends BaseChecker {
     });
     
     const orderedMembers = [...events, ...errors, ...structs, ...functions];
-    for (let i = 0; i < interfaceMembers.length; i++) {
-      if (interfaceMembers[i] !== orderedMembers[i]) {
+    for (let i = 0; i < orderedMembers.length; i++) {
+      if (orderedMembers[i] !== unOrderedMembers[i]) {
         this.error(
           node,
           `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Functions`
