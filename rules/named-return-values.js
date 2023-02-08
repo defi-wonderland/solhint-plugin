@@ -1,5 +1,4 @@
-
-const BaseChecker = require('../base-checker')
+const BaseChecker = require('solhint/lib/rules/base-checker')
 
 const ruleId = 'named-return-values'
 const meta = {
