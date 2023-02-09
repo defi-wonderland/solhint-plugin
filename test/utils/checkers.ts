@@ -8,8 +8,8 @@ import deprecations from 'solhint/lib/rules/deprecations/index';
 import miscellaneous from 'solhint/lib/rules/miscellaneous/index';
 import configObject from 'solhint/lib/config';
 import { validSeverityMap } from 'solhint/lib/config/config-validator';
-import NamedReturnValuesChecker from '../../../rules/named-return-values';
-import NonStateVarsLeadingUnderscoreChecker from '../../../rules/non-state-vars-leading-underscore';
+import NamedReturnValuesChecker from '../../rules/named-return-values';
+import NonStateVarsLeadingUnderscoreChecker from '../../rules/non-state-vars-leading-underscore';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
   const message = deprecationMessage

@@ -6,7 +6,7 @@ import astParents from 'ast-parents';
 import { applyExtends } from 'solhint/lib/config/config-file';
 import Reporter from 'solhint/lib/reporter';
 import TreeListener from 'solhint/lib/tree-listener';
-import checkers from './rules/index';
+import checkers from './checkers';
 
 function parseInput(inputStr) {
   try {

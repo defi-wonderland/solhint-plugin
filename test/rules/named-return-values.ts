@@ -1,5 +1,5 @@
 import assert from 'assert';
-import linter from '../utils/index';
+import linter from '../utils/parsers';
 const contractWith = require('solhint/test/common/contract-builder').contractWith;
 
 const config = {
