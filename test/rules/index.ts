@@ -1,15 +1,15 @@
-import chalk from "chalk";
-import _ from "lodash";
-import security from "solhint/lib/rules/security/index";
-import naming from "solhint/lib/rules/naming/index";
-import order from "solhint/lib/rules/order/index";
-import bestPractises from "solhint/lib/rules/best-practises/index";
-import deprecations from "solhint/lib/rules/deprecations/index";
-import miscellaneous from "solhint/lib/rules/miscellaneous/index";
-import configObject from "solhint/lib/config";
-import { validSeverityMap } from "solhint/lib/config/config-validator";
-import NamedReturnValuesChecker from "../../rules/named-return-values";
-import NonStateVarsLeadingUnderscoreChecker from "../../rules/non-state-vars-leading-underscore";
+import chalk from 'chalk';
+import _ from 'lodash';
+import security from 'solhint/lib/rules/security/index';
+import naming from 'solhint/lib/rules/naming/index';
+import order from 'solhint/lib/rules/order/index';
+import bestPractises from 'solhint/lib/rules/best-practises/index';
+import deprecations from 'solhint/lib/rules/deprecations/index';
+import miscellaneous from 'solhint/lib/rules/miscellaneous/index';
+import configObject from 'solhint/lib/config';
+import { validSeverityMap } from 'solhint/lib/config/config-validator';
+import NamedReturnValuesChecker from '../../rules/named-return-values';
+import NonStateVarsLeadingUnderscoreChecker from '../../rules/non-state-vars-leading-underscore';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
   const message = deprecationMessage
@@ -19,18 +19,10 @@ const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: Stri
 });
 
 const notifyRuleDoesntExist = _.memoize((ruleId: String) => {
-  console.warn(
-    chalk.yellow(`[solhint] Warning: Rule '${ruleId}' doesn't exist`)
-  );
+  console.warn(chalk.yellow(`[solhint] Warning: Rule '${ruleId}' doesn't exist`));
 });
 
-module.exports = function checkers(
-  reporter,
-  configVals,
-  inputSrc,
-  tokens,
-  fileName
-) {
+module.exports = function checkers(reporter, configVals, inputSrc, tokens, fileName) {
   const config = configObject.from(configVals);
   const { rules } = config;
   const meta = {
@@ -44,9 +36,7 @@ module.exports = function checkers(
 
   const allRules = [...coreRules(meta), ...pluginsRules(plugins, meta)];
 
-  const enabledRules = allRules.filter((coreRule) =>
-    ruleEnabled(coreRule, rules)
-  );
+  const enabledRules = allRules.filter((coreRule) => ruleEnabled(coreRule, rules));
 
   // show warnings for deprecated rules
   for (const rule of enabledRules) {
@@ -69,10 +59,7 @@ module.exports = function checkers(
 function coreRules(meta) {
   const { reporter, config, inputSrc, tokens } = meta;
 
-  const wonderlandPluginRules = [
-    new NamedReturnValuesChecker(reporter),
-    new NonStateVarsLeadingUnderscoreChecker(reporter),
-  ];
+  const wonderlandPluginRules = [new NamedReturnValuesChecker(reporter), new NonStateVarsLeadingUnderscoreChecker(reporter)];
 
   return [
     ...bestPractises(reporter, config, inputSrc),
@@ -90,20 +77,12 @@ function loadPlugin(pluginName: String, { reporter, config, inputSrc, fileName }
   try {
     plugins = require(`solhint-plugin-${pluginName}`);
   } catch (e) {
-    console.error(
-      chalk.red(
-        `[solhint] Error: Could not load solhint-plugin-${pluginName}, make sure it's installed.`
-      )
-    );
+    console.error(chalk.red(`[solhint] Error: Could not load solhint-plugin-${pluginName}, make sure it's installed.`));
     process.exit(1);
   }
 
   if (!Array.isArray(plugins)) {
-    console.warn(
-      chalk.yellow(
-        `[solhint] Warning: Plugin solhint-plugin-${pluginName} doesn't export an array of rules. Ignoring it.`
-      )
-    );
+    console.warn(chalk.yellow(`[solhint] Warning: Plugin solhint-plugin-${pluginName} doesn't export an array of rules. Ignoring it.`));
     return [];
   }
 
@@ -116,9 +95,7 @@ function loadPlugin(pluginName: String, { reporter, config, inputSrc, fileName }
 }
 
 function pluginsRules(configPlugins, meta) {
-  const plugins = Array.isArray(configPlugins)
-    ? configPlugins
-    : [configPlugins];
+  const plugins = Array.isArray(configPlugins) ? configPlugins : [configPlugins];
 
   return _(plugins)
     .map((name: String) => loadPlugin(name, meta))
@@ -134,12 +111,7 @@ function ruleEnabled(coreRule, rules) {
     ruleValue = rules[coreRule.ruleId][0];
   }
 
-  if (
-    rules &&
-    rules[coreRule.ruleId] !== undefined &&
-    ruleValue &&
-    validSeverityMap.includes(ruleValue)
-  ) {
+  if (rules && rules[coreRule.ruleId] !== undefined && ruleValue && validSeverityMap.includes(ruleValue)) {
     return coreRule;
   }
 }

@@ -1,12 +1,12 @@
-import fs from "fs";
-import * as parser from "@solidity-parser/parser";
-import glob from "glob";
-import ignore from "ignore";
-import astParents from "ast-parents";
-import { applyExtends } from "solhint/lib/config/config-file";
-import Reporter from "solhint/lib/reporter";
-import TreeListener from "solhint/lib/tree-listener";
-import checkers from "./rules/index";
+import fs from 'fs';
+import * as parser from '@solidity-parser/parser';
+import glob from 'glob';
+import ignore from 'ignore';
+import astParents from 'ast-parents';
+import { applyExtends } from 'solhint/lib/config/config-file';
+import Reporter from 'solhint/lib/reporter';
+import TreeListener from 'solhint/lib/tree-listener';
+import checkers from './rules/index';
 
 function parseInput(inputStr) {
   try {
@@ -18,7 +18,7 @@ function parseInput(inputStr) {
   }
 }
 
-function processStr(inputStr, config = {}, fileName = "") {
+function processStr(inputStr, config = {}, fileName = '') {
   config = applyExtends(config);
 
   let ast;
@@ -28,12 +28,7 @@ function processStr(inputStr, config = {}, fileName = "") {
     if (e instanceof parser.ParserError) {
       const reporter = new Reporter([], config);
       for (const error of e.errors) {
-        reporter.addReport(
-          error.line,
-          error.column,
-          Reporter.SEVERITY.ERROR,
-          `Parse error: ${error.message}`
-        );
+        reporter.addReport(error.line, error.column, Reporter.SEVERITY.ERROR, `Parse error: ${error.message}`);
       }
       return reporter;
     } else {
@@ -43,9 +38,7 @@ function processStr(inputStr, config = {}, fileName = "") {
 
   const tokens = parser.tokenize(inputStr, { loc: true });
   const reporter = new Reporter(tokens, config);
-  const listener = new TreeListener(
-    checkers(reporter, config, inputStr, tokens, fileName)
-  );
+  const listener = new TreeListener(checkers(reporter, config, inputStr, tokens, fileName));
 
   astParents(ast);
   parser.visit(ast, listener);

@@ -1,15 +1,14 @@
-const BaseChecker = require("solhint/lib/rules/base-checker");
-const naming = require("solhint/lib/common/identifier-naming");
+const BaseChecker = require('solhint/lib/rules/base-checker');
+const naming = require('solhint/lib/common/identifier-naming');
 
-const DEFAULT_SEVERITY = "warn";
+const DEFAULT_SEVERITY = 'warn';
 
-const ruleId = "non-state-vars-leading-underscore";
+const ruleId = 'non-state-vars-leading-underscore';
 const meta = {
-  type: "naming",
+  type: 'naming',
   docs: {
-    description:
-      "Non state variable names must start with a single underscore.",
-    category: "Style Guide Rules",
+    description: 'Non state variable names must start with a single underscore.',
+    category: 'Style Guide Rules',
   },
   isDefault: true,
   recommended: true,
@@ -25,7 +24,7 @@ class NonStateVarsLeadingUnderscoreChecker extends BaseChecker {
     this.inStateVariableDeclaration = true;
   }
 
-  "StateVariableDeclaration:exit"() {
+  'StateVariableDeclaration:exit'() {
     this.inStateVariableDeclaration = false;
   }
 
@@ -33,7 +32,7 @@ class NonStateVarsLeadingUnderscoreChecker extends BaseChecker {
     this.inStructDefinition = true;
   }
 
-  "StructDefinition:exit"() {
+  'StructDefinition:exit'() {
     this.inStructDefinition = false;
   }
 
@@ -49,20 +48,13 @@ class NonStateVarsLeadingUnderscoreChecker extends BaseChecker {
       return;
     }
 
-    if (
-      naming.hasLeadingUnderscore(node.name) !== shouldHaveLeadingUnderscore
-    ) {
+    if (naming.hasLeadingUnderscore(node.name) !== shouldHaveLeadingUnderscore) {
       this._error(node, node.name, shouldHaveLeadingUnderscore);
     }
   }
 
   _error(node, name, shouldHaveLeadingUnderscore) {
-    this.error(
-      node,
-      `'${name}' ${
-        shouldHaveLeadingUnderscore ? "should" : "should not"
-      } start with _`
-    );
+    this.error(node, `'${name}' ${shouldHaveLeadingUnderscore ? 'should' : 'should not'} start with _`);
   }
 }
 
