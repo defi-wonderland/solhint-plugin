@@ -17,7 +17,7 @@
     "lint:check": "prettier --check './**'",
     "lint:fix": "sort-package-json && prettier --write './**'",
     "exec-tests": "nyc mocha --recursive && nyc report --reporter=text-lcov | coveralls",
-    "test:coverage": "npm run exec-tests",
+    "test:coverage": "yarn run exec-tests",
     "lint": "eslint .",
     "docs": "node scripts/generate-rule-docs.js"
   },
