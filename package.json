@@ -9,7 +9,7 @@
     "wonderland"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "DeFi Wonderland",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
