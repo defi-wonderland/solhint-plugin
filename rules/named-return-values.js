@@ -1,20 +1,20 @@
-const BaseChecker = require('solhint/lib/rules/base-checker')
+const BaseChecker = require("solhint/lib/rules/base-checker");
 
-const ruleId = 'named-return-values'
+const ruleId = "named-return-values";
 const meta = {
-  type: 'best-practises',
+  type: "best-practises",
   docs: {
-    description: 'Enforce naming of all return values in functions',
-    category: 'Best Practices'
+    description: "Enforce naming of all return values in functions",
+    category: "Best Practices",
   },
   isDefault: true,
   recommended: true,
-  defaultSetup: 'warn'
-}
+  defaultSetup: "warn",
+};
 
 class NamedReturnValuesChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   FunctionDefinition(node) {
@@ -29,4 +29,4 @@ class NamedReturnValuesChecker extends BaseChecker {
   }
 }
 
-module.exports = NamedReturnValuesChecker
+module.exports = NamedReturnValuesChecker;

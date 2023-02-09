@@ -1,39 +1,40 @@
-const BaseChecker = require('solhint/lib/rules/base-checker')
-const naming = require('solhint/lib/common/identifier-naming')
+const BaseChecker = require("solhint/lib/rules/base-checker");
+const naming = require("solhint/lib/common/identifier-naming");
 
-const DEFAULT_SEVERITY = 'warn'
+const DEFAULT_SEVERITY = "warn";
 
-const ruleId = 'non-state-vars-leading-underscore'
+const ruleId = "non-state-vars-leading-underscore";
 const meta = {
-  type: 'naming',
+  type: "naming",
   docs: {
-    description: 'Non state variable names must start with a single underscore.',
-    category: 'Style Guide Rules'
+    description:
+      "Non state variable names must start with a single underscore.",
+    category: "Style Guide Rules",
   },
   isDefault: true,
   recommended: true,
   defaultSetup: [DEFAULT_SEVERITY],
-}
+};
 
 class NonStateVarsLeadingUnderscoreChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   StateVariableDeclaration() {
-    this.inStateVariableDeclaration = true
+    this.inStateVariableDeclaration = true;
   }
-  
-  'StateVariableDeclaration:exit'() {
-    this.inStateVariableDeclaration = false
+
+  "StateVariableDeclaration:exit"() {
+    this.inStateVariableDeclaration = false;
   }
-  
+
   StructDefinition(node) {
-    this.inStructDefinition = true
+    this.inStructDefinition = true;
   }
-  
-  'StructDefinition:exit'() {
-    this.inStructDefinition = false
+
+  "StructDefinition:exit"() {
+    this.inStructDefinition = false;
   }
 
   VariableDeclaration(node) {
@@ -45,20 +46,24 @@ class NonStateVarsLeadingUnderscoreChecker extends BaseChecker {
 
   validateName(node, shouldHaveLeadingUnderscore) {
     if (node.name === null) {
-      return
+      return;
     }
 
-    if (naming.hasLeadingUnderscore(node.name) !== shouldHaveLeadingUnderscore) {
-      this._error(node, node.name, shouldHaveLeadingUnderscore)
+    if (
+      naming.hasLeadingUnderscore(node.name) !== shouldHaveLeadingUnderscore
+    ) {
+      this._error(node, node.name, shouldHaveLeadingUnderscore);
     }
   }
 
   _error(node, name, shouldHaveLeadingUnderscore) {
     this.error(
       node,
-      `'${name}' ${shouldHaveLeadingUnderscore ? 'should' : 'should not'} start with _`
-    )
+      `'${name}' ${
+        shouldHaveLeadingUnderscore ? "should" : "should not"
+      } start with _`
+    );
   }
 }
 
-module.exports = NonStateVarsLeadingUnderscoreChecker
+module.exports = NonStateVarsLeadingUnderscoreChecker;
