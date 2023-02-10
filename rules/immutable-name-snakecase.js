@@ -14,7 +14,7 @@ const meta = {
   schema: null,
 }
 
-class ImmutableNameSnakecaseChecker extends BaseChecker {
+class ImmutableNameSnakeCaseChecker extends BaseChecker {
   constructor(reporter) {
     super(reporter, ruleId, meta)
   }
@@ -32,4 +32,4 @@ class ImmutableNameSnakecaseChecker extends BaseChecker {
   }
 }
 
-module.exports = ImmutableNameSnakecaseChecker
+module.exports = ImmutableNameSnakeCaseChecker
