@@ -8,21 +8,21 @@ const config = {
 
 describe('Linter - enum-name-camelcase', () => {
     it('should raise error for enum name not in camelcase', () => {
-        const code = contractWith('enum testenum {}');
+        const enumName = 'testenum';
+        const code = contractWith(`enum ${enumName} {}`);
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        console.log(report.messages[0].message);
-        assert.ok(report.messages[0].message == `Enum name 'testenum' must be in CamelCase`);
+        assert.ok(report.messages[0].message == `Enum name '${enumName}' must be in CamelCase`);
     });
 
     it('should raise error for enum name with snakecase', () => {
-        const code = contractWith('enum TEST_ENUM {}');
+        const enumName = 'TEST_ENUM';
+        const code = contractWith(`enum ${enumName} {}`);
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        console.log(report.messages[0].message);
-        assert.ok(report.messages[0].message == `Enum name 'TEST_ENUM' must be in CamelCase`);
+        assert.ok(report.messages[0].message == `Enum name '${enumName}' must be in CamelCase`);
     });
 
     it('should not raise error for enum name in camelcase', () => {
