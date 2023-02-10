@@ -1,5 +1,5 @@
-const BaseChecker = require('../base-checker')
-const naming = require('../../common/identifier-naming')
+const BaseChecker = require('solhint/lib/rules/base-checker');
+const naming = require('solhint/lib/common/identifier-naming');
 
 const ruleId = 'immutable-name-snakecase'
 const meta = {
