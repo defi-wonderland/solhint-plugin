@@ -6,13 +6,16 @@ const config = {
     rules: { 'contract-data-order': 'error' },
 };
 
+const contractName = 'A';
+const errorMessage = `The order of data in contract ${contractName} should be: Constants, Immutable variables, State Variables`;
+
 describe('Linter - contract-data-order', () => {
     it('should raise error for contract data order when state var first than constant', () => {
         const code = contractWith('uint public a; uint constant b;');
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of data in contract A should be: Constants, Immutable variables, State Variables`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
  
     it('should raise error for contract data order when state var first than immutable', () => {
@@ -20,7 +23,7 @@ describe('Linter - contract-data-order', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of data in contract A should be: Constants, Immutable variables, State Variables`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
 
     it('should raise error for contract data order when immutable first than constant', () => {
@@ -28,7 +31,7 @@ describe('Linter - contract-data-order', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of data in contract A should be: Constants, Immutable variables, State Variables`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
 
     it('should not raise an error for contract data order constant, state var, immutable', () => {
