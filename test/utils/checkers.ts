@@ -11,6 +11,7 @@ import { validSeverityMap } from 'solhint/lib/config/config-validator';
 import NamedReturnValuesChecker from '../../rules/named-return-values';
 import NonStateVarsLeadingUnderscoreChecker from '../../rules/non-state-vars-leading-underscore';
 import InterfaceStartsWithIChecker from '../../rules/interface-starts-with-i';
+import InterfaceMemberOrderChecker from '../../rules/interface-member-order';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
   const message = deprecationMessage
@@ -60,7 +61,7 @@ module.exports = function checkers(reporter, configVals, inputSrc, tokens, fileN
 function coreRules(meta) {
   const { reporter, config, inputSrc, tokens } = meta;
 
-  const wonderlandPluginRules = [new NamedReturnValuesChecker(reporter), new NonStateVarsLeadingUnderscoreChecker(reporter), new InterfaceStartsWithIChecker(reporter)];
+const wonderlandPluginRules = [new NamedReturnValuesChecker(reporter), new NonStateVarsLeadingUnderscoreChecker(reporter), new InterfaceStartsWithIChecker(reporter), new InterfaceMemberOrderChecker(reporter)];
 
   return [
     ...bestPractises(reporter, config, inputSrc),
