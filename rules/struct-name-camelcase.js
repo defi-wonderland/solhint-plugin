@@ -16,7 +16,7 @@ const meta = {
   schema: null,
 }
 
-class StructNameCamelcaseChecker extends BaseChecker {
+class StructNameCamelCaseChecker extends BaseChecker {
   constructor(reporter) {
     super(reporter, ruleId, meta)
   }
@@ -28,4 +28,4 @@ class StructNameCamelcaseChecker extends BaseChecker {
   }
 }
 
-module.exports = StructNameCamelcaseChecker
+module.exports = StructNameCamelCaseChecker
