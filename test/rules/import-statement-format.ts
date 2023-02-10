@@ -8,11 +8,12 @@ const config = {
 
 describe('Linter - import-statement-format', () => {
   it('should raise error for import statement with no alias', () => {
-    const code = contractWithImports('import "path/test.sol";');
+    const importPath = 'path/test.sol';
+    const code = contractWithImports(`import "${importPath}";`);
     const report = linter.processStr(code, config);
     assert.equal(report.errorCount, 1);
     assert.ok(
-      report.messages[0].message == `Import 'path/test.sol' in contract A should be declared as import {contract_to_import} from path/test.sol;`
+      report.messages[0].message == `Import '${importPath}' in contract A should be declared as import {contract_to_import} from path/test.sol;`
     );
   });
 
