@@ -11,6 +11,11 @@ import { validSeverityMap } from 'solhint/lib/config/config-validator';
 import NamedReturnValuesChecker from '../../rules/named-return-values';
 import NonStateVarsLeadingUnderscoreChecker from '../../rules/non-state-vars-leading-underscore';
 import ImmutableNameSnakeCaseChecker from '../../rules/immutable-name-snakecase';
+import InterfaceStartsWithIChecker from '../../rules/interface-starts-with-i';
+import EnumNameCamelCaseChecker from '../../rules/enum-name-camelcase';
+import InterfaceMemberOrderChecker from '../../rules/interface-member-order';
+import ImportStatementFormatChecker from '../../rules/import-statement-format';
+import ContractDataOrderChecker from '../../rules/contract-data-order';
 import StructNameCamelCaseChecker from '../../rules/struct-name-camelcase';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
@@ -61,7 +66,8 @@ module.exports = function checkers(reporter, configVals, inputSrc, tokens, fileN
 function coreRules(meta) {
   const { reporter, config, inputSrc, tokens } = meta;
 
-  const wonderlandPluginRules = [new NamedReturnValuesChecker(reporter), new NonStateVarsLeadingUnderscoreChecker(reporter), new StructNameCamelCaseChecker(reporter), new ImmutableNameSnakeCaseChecker(reporter)];
+  const wonderlandPluginRules = [new NamedReturnValuesChecker(reporter), new NonStateVarsLeadingUnderscoreChecker(reporter), new StructNameCamelCaseChecker(reporter), new ContractDataOrderChecker(reporter),
+    new ImportStatementFormatChecker(reporter), new InterfaceStartsWithIChecker(reporter), new InterfaceMemberOrderChecker(reporter), new EnumNameCamelCaseChecker(reporter), new ImmutableNameSnakeCaseChecker(reporter)];
 
   return [
     ...bestPractises(reporter, config, inputSrc),
