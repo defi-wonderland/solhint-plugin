@@ -46,14 +46,14 @@ class ContractDataOrderChecker extends BaseChecker {
     });
     
     const orderedMembers = [...constants, ...immutableVariables, ...stateVariables];
-    for (let i = 0; i < orderedMembers.length; i++) {
-      if (unOrderedMembers[i] !== orderedMembers[i]) {
+    const misorderedMember = unOrderedMembers.find((unOrderedMember, index) => {
+        return unOrderedMember !== orderedMembers[index];
+    });
+    if (misorderedMember) {
         this.error(
           node,
           `The order of data in contract ${node.name} should be: Constants, Immutable variables, State Variables`
         );
-        break;
-      }
     }
   }
 }
