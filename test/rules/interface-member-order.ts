@@ -7,6 +7,7 @@ const config = {
 };
 
 const interfaceName = 'ITest';
+const errorMessage = `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Functions`;
 
 describe('Linter - interface-member-order', () => {
     it('should raise error when errors first than events', () => {
@@ -14,7 +15,7 @@ describe('Linter - interface-member-order', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Functions`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
 
     it('should raise error when structs first than errors', () => {
@@ -22,7 +23,7 @@ describe('Linter - interface-member-order', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Functions`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
 
     it('should raise error when functions first than structs', () => {
@@ -30,7 +31,7 @@ describe('Linter - interface-member-order', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Functions`);
+        assert.ok(report.messages[0].message == errorMessage);
     });
 
     it('should not raise error for interface member order events, errors, structs and functions', () => {

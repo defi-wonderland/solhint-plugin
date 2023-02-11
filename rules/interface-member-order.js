@@ -51,14 +51,15 @@ class InterfaceMemberOrderChecker extends BaseChecker {
     });
     
     const orderedMembers = [...events, ...errors, ...structs, ...functions];
-    for (let i = 0; i < orderedMembers.length; i++) {
-      if (orderedMembers[i] !== unOrderedMembers[i]) {
-        this.error(
-          node,
-          `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Functions`
-        );
-        break;
-      }
+    
+    const misorderedMember = unOrderedMembers.find((unOrderedMember, index) => {
+      return unOrderedMember !== orderedMembers[index];
+    });
+    if (misorderedMember) {
+      this.error(
+        node,
+        `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Functions`
+      );
     }
   }
 }
