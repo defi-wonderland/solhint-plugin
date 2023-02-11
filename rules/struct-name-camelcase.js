@@ -1,29 +1,31 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 const naming = require('solhint/lib/common/identifier-naming');
 
-const ruleId = 'enum-name-camelcase'
+const ruleId = 'struct-name-camelcase'
 const meta = {
   type: 'naming',
+
   docs: {
-    description: 'Enum name must be in CamelCase.',
+    description: 'Struct name must be in CamelCase.',
     category: 'Style Guide Rules',
   },
+
   isDefault: true,
   recommended: true,
   defaultSetup: 'warn',
-  schema: [],
+  schema: null,
 }
 
-class EnumNameCamelCaseChecker extends BaseChecker {
+class StructNameCamelCaseChecker extends BaseChecker {
   constructor(reporter) {
     super(reporter, ruleId, meta)
   }
 
-  EnumDefinition(node) {
+  StructDefinition(node) {
     if (naming.isNotCamelCase(node.name)) {
-      this.error(node, `Enum name '${node.name}' must be in CamelCase`)
+      this.error(node, `Struct name '${node.name}' must be in CamelCase`)
     }
   }
 }
 
-module.exports = EnumNameCamelCaseChecker
+module.exports = StructNameCamelCaseChecker
