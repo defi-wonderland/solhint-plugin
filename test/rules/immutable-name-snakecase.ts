@@ -23,4 +23,11 @@ describe('Linter - immutable-name-snakecase', () => {
 
         assert.equal(report.errorCount, 0);
     });
+
+    it('should not raise error for immutable name in snakecase with underscore prefix', () => {
+        const code = contractWith('uint256 immutable _TEST_VAR;');
+        const report = linter.processStr(code, config);
+
+        assert.equal(report.errorCount, 0);
+    });
 });
