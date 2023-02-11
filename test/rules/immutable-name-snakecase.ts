@@ -13,7 +13,6 @@ describe('Linter - immutable-name-snakecase', () => {
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        console.log(report.messages[0].message)
         assert.ok(report.messages[0].message == `Immutable '${varName}' must be in capitalized SNAKE_CASE`);
     });
 
