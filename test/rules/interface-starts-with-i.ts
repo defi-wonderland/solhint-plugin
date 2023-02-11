@@ -8,13 +8,13 @@ const config = {
 
 describe('Linter - interface-starts-with-i', () => {
     it('should raise error for interface not starting with I', () => {
-        const interfaceName = 'Test';
-        const code = interfaceWith(interfaceName , '');
+        const code = interfaceWith('Test' , '');
         const report = linter.processStr(code, config);
 
         assert.equal(report.errorCount, 1);
-        assert.ok(report.messages[0].message == `Interface name '${interfaceName}' must start with "I"`);
+        assert.ok(report.messages[0].message == `Interface name 'Test' must start with "I"`);
     });
+
 
     it('should not raise error for interface starting with I', () => {
         const code = interfaceWith('ITest', '');
