@@ -1,4 +1,4 @@
-const BaseChecker = require('solhint/lib/rules/base-checker');
+import BaseChecker from 'solhint/lib/rules/base-checker';
 
 const ruleId = 'interface-starts-with-i';
 const meta = {
@@ -13,12 +13,12 @@ const meta = {
   schema: [],
 };
 
-class InterfaceStartsWithIChecker extends BaseChecker {
-  constructor(reporter) {
+export class InterfaceStartsWithIChecker extends BaseChecker implements Rule {
+  constructor(reporter: any) {
     super(reporter, ruleId, meta);
   }
 
-  ContractDefinition(node) {
+  ContractDefinition(node: any) {
     if (node.kind !== 'interface') return;
     const interfaceName = node.name;
 
@@ -27,5 +27,3 @@ class InterfaceStartsWithIChecker extends BaseChecker {
     }
   }
 }
-
-module.exports = InterfaceStartsWithIChecker;

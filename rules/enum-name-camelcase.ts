@@ -1,5 +1,5 @@
-const BaseChecker = require('solhint/lib/rules/base-checker');
-const naming = require('solhint/lib/common/identifier-naming');
+import BaseChecker from 'solhint/lib/rules/base-checker';
+import { isNotCamelCase } from 'solhint/lib/common/identifier-naming';
 
 const ruleId = 'enum-name-camelcase';
 const meta = {
@@ -14,16 +14,14 @@ const meta = {
   schema: [],
 };
 
-class EnumNameCamelCaseChecker extends BaseChecker {
-  constructor(reporter) {
+export class EnumNameCamelCaseChecker extends BaseChecker implements Rule {
+  constructor(reporter: any) {
     super(reporter, ruleId, meta);
   }
 
-  EnumDefinition(node) {
-    if (naming.isNotCamelCase(node.name)) {
+  EnumDefinition(node: any) {
+    if (isNotCamelCase(node.name)) {
       this.error(node, `Enum name '${node.name}' must be in CamelCase`);
     }
   }
 }
-
-module.exports = EnumNameCamelCaseChecker;

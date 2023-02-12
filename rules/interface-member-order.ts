@@ -1,4 +1,4 @@
-const BaseChecker = require('solhint/lib/rules/base-checker');
+import BaseChecker from 'solhint/lib/rules/base-checker';
 
 const ruleId = 'interface-member-order';
 const meta = {
@@ -13,21 +13,21 @@ const meta = {
   schema: [],
 };
 
-class InterfaceMemberOrderChecker extends BaseChecker {
-  constructor(reporter) {
+export class InterfaceMemberOrderChecker extends BaseChecker implements Rule {
+  constructor(reporter: any) {
     super(reporter, ruleId, meta);
   }
 
-  ContractDefinition(node) {
+  ContractDefinition(node: any) {
     if (node.kind !== 'interface') return;
     const interfaceMembers = node.subNodes;
-    const unOrderedMembers = [];
-    const events = [];
-    const errors = [];
-    const structs = [];
-    const functions = [];
+    const unOrderedMembers: any[] = [];
+    const events: any[] = [];
+    const errors: any[] = [];
+    const structs: any[] = [];
+    const functions: any[] = [];
 
-    interfaceMembers.forEach((member) => {
+    interfaceMembers.forEach((member: any) => {
       switch (member.type) {
         case 'EventDefinition':
           unOrderedMembers.push(member);
@@ -60,5 +60,3 @@ class InterfaceMemberOrderChecker extends BaseChecker {
     }
   }
 }
-
-module.exports = InterfaceMemberOrderChecker;

@@ -1,38 +1,36 @@
-const BaseChecker = require('solhint/lib/rules/base-checker');
+import BaseChecker from 'solhint/lib/rules/base-checker';
 
 const ruleId = 'contract-data-order';
 const meta = {
   type: 'Best Practices',
-
   docs: {
     description: 'Enforce the specified ordering of data in contracts',
     category: 'Best Practices',
   },
-
   isDefault: true,
   recommended: true,
   defaultSetup: 'warn',
   schema: [],
 };
 
-class ContractDataOrderChecker extends BaseChecker {
-  constructor(reporter) {
+export class ContractDataOrderChecker extends BaseChecker implements Rule {
+  constructor(reporter: any) {
     super(reporter, ruleId, meta);
   }
 
-  ContractDefinition(node) {
+  ContractDefinition(node: any) {
     if (node.kind !== 'contract') return;
 
     const contractMembers = node.subNodes;
-    const unOrderedMembers = [];
-    const constants = [];
-    const immutableVariables = [];
-    const stateVariables = [];
+    const unOrderedMembers: any[] = [];
+    const constants: any[] = [];
+    const immutableVariables: any[] = [];
+    const stateVariables: any[] = [];
 
-    contractMembers.forEach((member) => {
+    contractMembers.forEach((member: any) => {
       if (member.type === 'StateVariableDeclaration') {
         unOrderedMembers.push(member);
-        member.variables.forEach((variable) => {
+        member.variables.forEach((variable: any) => {
           if (variable.isDeclaredConst) {
             constants.push(member);
           } else if (variable.isImmutable) {
@@ -53,5 +51,3 @@ class ContractDataOrderChecker extends BaseChecker {
     }
   }
 }
-
-module.exports = ContractDataOrderChecker;
