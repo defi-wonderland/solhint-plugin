@@ -12,7 +12,8 @@ describe('Linter - import-statement-format', () => {
     const report = processStr(code, config);
     assert.equal(report.errorCount, 1);
     assert.ok(
-      report.messages[0].message == `Import '${importPath}' in contract A should be declared as import {contract_to_import} from path/test.sol;`
+      report.messages[0].message ==
+        `Import '${importPath}' in contract A should be declared as import {contract_to_import} from 'path/test.sol';`
     );
   });
 

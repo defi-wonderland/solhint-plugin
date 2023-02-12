@@ -1,5 +1,5 @@
 import BaseChecker from 'solhint/lib/rules/base-checker';
-import { isNotCamelCase } from 'solhint/lib/common/identifier-naming';
+import { isCamelCase } from 'solhint/lib/common/identifier-naming';
 
 const ruleId = 'enum-name-camelcase';
 const meta = {
@@ -20,7 +20,7 @@ export class EnumNameCamelCaseChecker extends BaseChecker implements Rule {
   }
 
   EnumDefinition(node: any) {
-    if (isNotCamelCase(node.name)) {
+    if (!isCamelCase(node.name)) {
       this.error(node, `Enum name '${node.name}' must be in CamelCase`);
     }
   }
