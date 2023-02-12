@@ -40,7 +40,6 @@ Finally, inside your `.solhint.json` configuration file, add:
 | `interface-starts-with-i`           | Interfaces name should start with `I`. Example: `IMyContract`.                       |
 | `named-return-values`               | Functions return values should be named.                                             |
 | `non-state-vars-leading-underscore` | Variables that are not in the state should start with underscore. Example: `_myVar`. |
-| `public-member-interface-rule`      | All the public members of a contract should be defined in the interface as well.     |
 | `struct-name-camelcase`             | Structs name should be in CamelCase.                                                 |
 
 ---

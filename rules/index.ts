@@ -6,7 +6,6 @@ import { InterfaceMemberOrderChecker } from './interface-member-order';
 import { InterfaceStartsWithIChecker } from './interface-starts-with-i';
 import { NamedReturnValuesChecker } from './named-return-values';
 import { NonStateVarsLeadingUnderscoreChecker } from './non-state-vars-leading-underscore';
-// import { PublicMemberInterfaceRule } from './public-member-interface-rule';
 import { StructNameCamelCaseChecker } from './struct-name-camelcase';
 
 const rules: typeof Rule[] = [
@@ -18,7 +17,6 @@ const rules: typeof Rule[] = [
   InterfaceStartsWithIChecker,
   NamedReturnValuesChecker,
   NonStateVarsLeadingUnderscoreChecker,
-  // PublicMemberInterfaceRule,
   StructNameCamelCaseChecker,
 ];
 

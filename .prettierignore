@@ -6,6 +6,8 @@
 .DS_STORE
 build
 .husky
+LICENSE
+.github/CODEOWNERS
 
 # JS
 node_modules
