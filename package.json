@@ -1,7 +1,7 @@
 {
-  "name": "solhint-plugin-wonderland",
+  "name": "@defi-wonderland/solhint-plugin",
   "version": "0.0.1",
-  "description": "DeFi Wonderland Solidity best practices Solhint plugin",
+  "description": "DeFi Wonderland's best practices Solhint plugin",
   "keywords": [
     "solhint",
     "plugin",
@@ -10,9 +10,10 @@
   ],
   "license": "MIT",
   "author": "DeFi Wonderland",
-  "main": "index.js",
+  "main": "build/index",
+  "types": "build/index",
   "files": [
-    "rules"
+    "build"
   ],
   "scripts": {
     "build": "tsc",

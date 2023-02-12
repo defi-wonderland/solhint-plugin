@@ -5,7 +5,7 @@ const ruleId = 'enum-name-camelcase';
 const meta = {
   type: 'naming',
   docs: {
-    description: 'Enum name must be in CamelCase.',
+    description: 'Enums name should be in CamelCase.',
     category: 'Style Guide Rules',
   },
   isDefault: true,

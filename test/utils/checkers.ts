@@ -1,14 +1,14 @@
 import chalk from 'chalk';
 import _ from 'lodash';
-import security from 'solhint/lib/rules/security/index';
-import naming from 'solhint/lib/rules/naming/index';
-import order from 'solhint/lib/rules/order/index';
-import bestPractises from 'solhint/lib/rules/best-practises/index';
-import deprecations from 'solhint/lib/rules/deprecations/index';
-import miscellaneous from 'solhint/lib/rules/miscellaneous/index';
+import security from 'solhint/lib/rules/security';
+import naming from 'solhint/lib/rules/naming';
+import order from 'solhint/lib/rules/order';
+import bestPractises from 'solhint/lib/rules/best-practises';
+import deprecations from 'solhint/lib/rules/deprecations';
+import miscellaneous from 'solhint/lib/rules/miscellaneous';
 import configObject from 'solhint/lib/config';
 import { validSeverityMap } from 'solhint/lib/config/config-validator';
-import rules from '../../rules/index';
+import rules from '../../rules';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
   const message = deprecationMessage

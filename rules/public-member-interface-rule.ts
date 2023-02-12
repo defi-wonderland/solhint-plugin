@@ -1,8 +1,8 @@
 export const PublicMemberInterfaceRule = {
   meta: {
-    type: 'suggestion',
+    type: 'best-practices',
     docs: {
-      description: 'Enforce that all public members should be in the interface',
+      description: 'All the public members of a contract should be defined in the interface as well.',
       category: 'Best Practices',
       recommended: true,
     },

@@ -5,7 +5,7 @@ const ruleId = 'immutable-name-snakecase';
 const meta = {
   type: 'naming',
   docs: {
-    description: 'Immutable name must be in capitalized SNAKE_CASE.',
+    description: 'Immutable variables names should be in capitalized SNAKE_CASE.',
     category: 'Style Guide Rules',
   },
   isDefault: true,

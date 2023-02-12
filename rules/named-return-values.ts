@@ -4,7 +4,7 @@ const ruleId = 'named-return-values';
 const meta = {
   type: 'best-practises',
   docs: {
-    description: 'Enforce naming of all return values in functions',
+    description: 'Functions return values should be named.',
     category: 'Best Practices',
   },
   isDefault: true,

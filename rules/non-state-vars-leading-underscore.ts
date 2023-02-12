@@ -7,7 +7,7 @@ const ruleId: string = 'non-state-vars-leading-underscore';
 const meta = {
   type: 'naming',
   docs: {
-    description: 'Non state variable names must start with a single underscore.',
+    description: 'Variables that are not in the state should start with underscore. Example: `_myVar`.',
     category: 'Style Guide Rules',
   },
   isDefault: true,

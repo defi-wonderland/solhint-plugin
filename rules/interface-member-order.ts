@@ -2,9 +2,9 @@ import BaseChecker from 'solhint/lib/rules/base-checker';
 
 const ruleId = 'interface-member-order';
 const meta = {
-  type: 'Best Practices',
+  type: 'best-practices',
   docs: {
-    description: 'Enforce the specified ordering of members in interfaces',
+    description: 'Interfaces members should be ordered: events, errors, structs, functions.',
     category: 'Best Practices',
   },
   isDefault: true,

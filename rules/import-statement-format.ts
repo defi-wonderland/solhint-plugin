@@ -4,7 +4,7 @@ const ruleId = 'import-statement-format';
 const meta = {
   type: 'best-practices',
   docs: {
-    description: 'Enforce proper import statement format',
+    description: "Imports should specify imported node. Example: `import {A} from 'b.sol'`",
     category: 'Stylistic Issues',
   },
   isDefault: true,

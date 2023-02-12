@@ -2,9 +2,9 @@ import BaseChecker from 'solhint/lib/rules/base-checker';
 
 const ruleId = 'contract-data-order';
 const meta = {
-  type: 'Best Practices',
+  type: 'best-practices',
   docs: {
-    description: 'Enforce the specified ordering of data in contracts',
+    description: 'Contracts storage members should be ordered: constants, immutable variables, others.',
     category: 'Best Practices',
   },
   isDefault: true,

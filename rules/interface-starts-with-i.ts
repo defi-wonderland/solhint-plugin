@@ -4,7 +4,7 @@ const ruleId = 'interface-starts-with-i';
 const meta = {
   type: 'naming',
   docs: {
-    description: 'Enforce that all interface names start with "I"',
+    description: 'Interfaces name should start with `I`. Example: `IMyContract`',
     category: 'Style Guide Rules',
   },
   isDefault: true,

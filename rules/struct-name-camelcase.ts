@@ -5,7 +5,7 @@ const ruleId = 'struct-name-camelcase';
 const meta = {
   type: 'naming',
   docs: {
-    description: 'Struct name must be in CamelCase.',
+    description: 'Structs name should be in CamelCase.',
     category: 'Style Guide Rules',
   },
   isDefault: true,
