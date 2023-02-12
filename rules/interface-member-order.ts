@@ -1,6 +1,6 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 
-const ruleId = 'interface-member-order'
+const ruleId = 'interface-member-order';
 const meta = {
   type: 'Best Practices',
   docs: {
@@ -10,12 +10,12 @@ const meta = {
   isDefault: true,
   recommended: true,
   defaultSetup: 'warn',
-  schema: []
-}
+  schema: [],
+};
 
 class InterfaceMemberOrderChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   ContractDefinition(node) {
@@ -26,8 +26,8 @@ class InterfaceMemberOrderChecker extends BaseChecker {
     const errors = [];
     const structs = [];
     const functions = [];
-    
-    interfaceMembers.forEach(member => {
+
+    interfaceMembers.forEach((member) => {
       switch (member.type) {
         case 'EventDefinition':
           unOrderedMembers.push(member);
@@ -49,19 +49,16 @@ class InterfaceMemberOrderChecker extends BaseChecker {
           break;
       }
     });
-    
+
     const orderedMembers = [...events, ...errors, ...structs, ...functions];
-    
+
     const misorderedMember = unOrderedMembers.find((unOrderedMember, index) => {
       return unOrderedMember !== orderedMembers[index];
     });
     if (misorderedMember) {
-      this.error(
-        node,
-        `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Functions`
-      );
+      this.error(node, `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Functions`);
     }
   }
 }
 
-module.exports = InterfaceMemberOrderChecker
+module.exports = InterfaceMemberOrderChecker;

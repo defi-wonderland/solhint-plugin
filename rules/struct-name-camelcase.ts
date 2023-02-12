@@ -1,7 +1,7 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 const naming = require('solhint/lib/common/identifier-naming');
 
-const ruleId = 'struct-name-camelcase'
+const ruleId = 'struct-name-camelcase';
 const meta = {
   type: 'naming',
 
@@ -14,18 +14,18 @@ const meta = {
   recommended: true,
   defaultSetup: 'warn',
   schema: null,
-}
+};
 
 class StructNameCamelCaseChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   StructDefinition(node) {
     if (naming.isNotCamelCase(node.name)) {
-      this.error(node, `Struct name '${node.name}' must be in CamelCase`)
+      this.error(node, `Struct name '${node.name}' must be in CamelCase`);
     }
   }
 }
 
-module.exports = StructNameCamelCaseChecker
+module.exports = StructNameCamelCaseChecker;

@@ -1,23 +1,23 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 
-const ruleId = 'contract-data-order'
+const ruleId = 'contract-data-order';
 const meta = {
   type: 'Best Practices',
 
   docs: {
     description: 'Enforce the specified ordering of data in contracts',
-        category: 'Best Practices',
+    category: 'Best Practices',
   },
 
   isDefault: true,
   recommended: true,
   defaultSetup: 'warn',
-  schema: []
-}
+  schema: [],
+};
 
 class ContractDataOrderChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   ContractDefinition(node) {
@@ -28,9 +28,8 @@ class ContractDataOrderChecker extends BaseChecker {
     const constants = [];
     const immutableVariables = [];
     const stateVariables = [];
-    
-    contractMembers.forEach(member => {
 
+    contractMembers.forEach((member) => {
       if (member.type === 'StateVariableDeclaration') {
         unOrderedMembers.push(member);
         member.variables.forEach((variable) => {
@@ -41,21 +40,18 @@ class ContractDataOrderChecker extends BaseChecker {
           } else {
             stateVariables.push(member);
           }
-      });
+        });
       }
     });
-    
+
     const orderedMembers = [...constants, ...immutableVariables, ...stateVariables];
     const misorderedMember = unOrderedMembers.find((unOrderedMember, index) => {
-        return unOrderedMember !== orderedMembers[index];
+      return unOrderedMember !== orderedMembers[index];
     });
     if (misorderedMember) {
-        this.error(
-          node,
-          `The order of data in contract ${node.name} should be: Constants, Immutable variables, State Variables`
-        );
+      this.error(node, `The order of data in contract ${node.name} should be: Constants, Immutable variables, State Variables`);
     }
   }
 }
 
-module.exports = ContractDataOrderChecker
+module.exports = ContractDataOrderChecker;

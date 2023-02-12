@@ -1,7 +1,7 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 const naming = require('solhint/lib/common/identifier-naming');
 
-const ruleId = 'immutable-name-snakecase'
+const ruleId = 'immutable-name-snakecase';
 const meta = {
   type: 'naming',
   docs: {
@@ -12,24 +12,24 @@ const meta = {
   recommended: true,
   defaultSetup: 'warn',
   schema: null,
-}
+};
 
 class ImmutableNameSnakeCaseChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   VariableDeclaration(node) {
     if (node.isImmutable) {
-      this.validateImmutableName(node)
+      this.validateImmutableName(node);
     }
   }
 
   validateImmutableName(variable) {
     if (naming.isNotUpperSnakeCase(variable.name)) {
-      this.error(variable, `Immutable '${variable.name}' must be in capitalized SNAKE_CASE`)
+      this.error(variable, `Immutable '${variable.name}' must be in capitalized SNAKE_CASE`);
     }
   }
 }
 
-module.exports = ImmutableNameSnakeCaseChecker
+module.exports = ImmutableNameSnakeCaseChecker;

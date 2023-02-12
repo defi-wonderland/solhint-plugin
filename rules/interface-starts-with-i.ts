@@ -1,6 +1,6 @@
 const BaseChecker = require('solhint/lib/rules/base-checker');
 
-const ruleId = 'interface-starts-with-i'
+const ruleId = 'interface-starts-with-i';
 const meta = {
   type: 'naming',
   docs: {
@@ -10,23 +10,22 @@ const meta = {
   isDefault: true,
   recommended: true,
   defaultSetup: 'warn',
-  schema: []
-}
+  schema: [],
+};
 
 class InterfaceStartsWithIChecker extends BaseChecker {
   constructor(reporter) {
-    super(reporter, ruleId, meta)
+    super(reporter, ruleId, meta);
   }
 
   ContractDefinition(node) {
     if (node.kind !== 'interface') return;
     const interfaceName = node.name;
-    
+
     if (!interfaceName.startsWith('I')) {
-      this.error(node, `Interface name '${interfaceName}' must start with "I"`
-      );
+      this.error(node, `Interface name '${interfaceName}' must start with "I"`);
     }
   }
 }
 
-module.exports = InterfaceStartsWithIChecker
+module.exports = InterfaceStartsWithIChecker;
