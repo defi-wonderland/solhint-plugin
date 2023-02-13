@@ -5,7 +5,7 @@ import * as ImportStatementFormatChecker from './import-statement-format';
 import * as InterfaceMemberOrderChecker from './interface-member-order';
 import * as InterfaceStartsWithIChecker from './interface-starts-with-i';
 import * as NamedReturnValuesChecker from './named-return-values';
-import * as NonStateVarsLeadingUnderscoreChecker from './non-state-vars-leading-underscore';
+const NonStateVarsLeadingUnderscoreChecker = './non-state-vars-leading-underscore';
 import * as StructNameCamelCaseChecker from './struct-name-camelcase';
 
 const rules = [
@@ -20,4 +20,4 @@ const rules = [
   StructNameCamelCaseChecker,
 ];
 
-export default rules;
+export = rules;

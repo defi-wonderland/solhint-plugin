@@ -15,7 +15,7 @@ const meta = {
   defaultSetup: [DEFAULT_SEVERITY],
 };
 
-export class NonStateVarsLeadingUnderscoreChecker extends BaseChecker implements Rule {
+class NonStateVarsLeadingUnderscoreChecker extends BaseChecker implements Rule {
   private inStateVariableDeclaration = false;
   private inStructDefinition = false;
 
@@ -60,3 +60,5 @@ export class NonStateVarsLeadingUnderscoreChecker extends BaseChecker implements
     this.error(node, `'${name}' ${shouldHaveLeadingUnderscore ? 'should' : 'should not'} start with _`);
   }
 }
+
+export =  NonStateVarsLeadingUnderscoreChecker;
