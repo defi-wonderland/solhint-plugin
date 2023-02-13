@@ -8,7 +8,7 @@ import * as NamedReturnValuesChecker from './named-return-values';
 import * as NonStateVarsLeadingUnderscoreChecker from './non-state-vars-leading-underscore';
 import * as StructNameCamelCaseChecker from './struct-name-camelcase';
 
-export const rules = [
+const rules = [
   ContractDataOrderChecker,
   EnumNameCamelCaseChecker,
   ImmutableNameSnakeCaseChecker,
@@ -19,3 +19,5 @@ export const rules = [
   NonStateVarsLeadingUnderscoreChecker,
   StructNameCamelCaseChecker,
 ];
+
+export default rules;

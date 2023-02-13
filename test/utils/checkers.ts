@@ -8,7 +8,7 @@ import deprecations from 'solhint/lib/rules/deprecations';
 import miscellaneous from 'solhint/lib/rules/miscellaneous';
 import configObject from 'solhint/lib/config';
 import { validSeverityMap } from 'solhint/lib/config/config-validator';
-import rules from '../../rules';
+import rules from '../../rules/rules';
 
 const notifyRuleDeprecated = _.memoize((ruleId: String, deprecationMessage: String) => {
   const message = deprecationMessage
