@@ -15,7 +15,7 @@ const meta = {
   defaultSetup: [DEFAULT_SEVERITY],
 };
 
-class NonStateVarsLeadingUnderscoreChecker extends BaseChecker implements Rule {
+export class NonStateVarsLeadingUnderscoreChecker extends BaseChecker implements Rule {
   private inStateVariableDeclaration = false;
   private inStructDefinition = false;
 

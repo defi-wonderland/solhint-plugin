@@ -5,7 +5,7 @@ import { ImportStatementFormatChecker } from './import-statement-format';
 import { InterfaceMemberOrderChecker } from './interface-member-order';
 import { InterfaceStartsWithIChecker } from './interface-starts-with-i';
 import { NamedReturnValuesChecker } from './named-return-values';
-const NonStateVarsLeadingUnderscoreChecker = require('./non-state-vars-leading-underscore');
+import { NonStateVarsLeadingUnderscoreChecker } from './non-state-vars-leading-underscore';
 import { StructNameCamelCaseChecker } from './struct-name-camelcase';
 
 const rules: typeof Rule[] = [
