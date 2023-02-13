@@ -1,6 +1,6 @@
 # DeFi Wonderland's Solhint Plugin
 
-[![image](https://img.shields.io/npm/v/@defi-wonderland/solhint-plugin.svg?style=flat-square)](https://www.npmjs.org/package/@defi-wonderland/solhint-plugin)
+[![image](https://img.shields.io/npm/v/solhint-plugin-defi-wonderland.svg?style=flat-square)](https://www.npmjs.org/package/solhint-plugin-defi-wonderland)
 ![Tests](https://github.com/defi-wonderland/solhint-plugin/actions/workflows/unit-tests.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/defi-wonderland/solhint-plugin/blob/main/LICENSE)
 
@@ -13,13 +13,13 @@ This custom Solhint Plugin aims to contain all of the Solidity best practices im
 [Setup Solhint](TODO) in your Solidity project if you haven't already. Then run:
 
 ```sh
-yard add -D @defi-wonderland/solhint-plugin
+yard add -D solhint-plugin-defi-wonderland
 ```
 
 or
 
 ```sh
-npm install --save-dev @defi-wonderland/solhint-plugin
+npm install --save-dev solhint-plugin-defi-wonderland
 ```
 
 Finally, inside your `.solhint.json` configuration file, add:
