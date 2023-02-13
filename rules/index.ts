@@ -20,4 +20,4 @@ const rules: typeof Rule[] = [
   StructNameCamelCaseChecker,
 ];
 
-export default rules;
+export = rules;
