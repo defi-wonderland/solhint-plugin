@@ -13,7 +13,7 @@ This custom Solhint Plugin aims to contain all of the Solidity best practices im
 [Setup Solhint](TODO) in your Solidity project if you haven't already. Then run:
 
 ```sh
-yard add -D solhint-plugin-defi-wonderland
+yarn add -D solhint-plugin-defi-wonderland
 ```
 
 or
