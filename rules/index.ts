@@ -1,14 +1,14 @@
-import { ContractDataOrderChecker } from './contract-data-order';
-import { EnumNameCamelCaseChecker } from './enum-name-camelcase';
-import { ImmutableNameSnakeCaseChecker } from './immutable-name-snakecase';
-import { ImportStatementFormatChecker } from './import-statement-format';
-import { InterfaceMemberOrderChecker } from './interface-member-order';
-import { InterfaceStartsWithIChecker } from './interface-starts-with-i';
-import { NamedReturnValuesChecker } from './named-return-values';
-import { NonStateVarsLeadingUnderscoreChecker } from './non-state-vars-leading-underscore';
-import { StructNameCamelCaseChecker } from './struct-name-camelcase';
+import * as ContractDataOrderChecker from './contract-data-order';
+import * as EnumNameCamelCaseChecker from './enum-name-camelcase';
+import * as ImmutableNameSnakeCaseChecker from './immutable-name-snakecase';
+import * as ImportStatementFormatChecker from './import-statement-format';
+import * as InterfaceMemberOrderChecker from './interface-member-order';
+import * as InterfaceStartsWithIChecker from './interface-starts-with-i';
+import * as NamedReturnValuesChecker from './named-return-values';
+import * as NonStateVarsLeadingUnderscoreChecker from './non-state-vars-leading-underscore';
+import * as StructNameCamelCaseChecker from './struct-name-camelcase';
 
-const rules: typeof Rule[] = [
+export const rules = [
   ContractDataOrderChecker,
   EnumNameCamelCaseChecker,
   ImmutableNameSnakeCaseChecker,
@@ -19,5 +19,3 @@ const rules: typeof Rule[] = [
   NonStateVarsLeadingUnderscoreChecker,
   StructNameCamelCaseChecker,
 ];
-
-export default rules;
