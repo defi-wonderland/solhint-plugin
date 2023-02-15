@@ -1,6 +1,6 @@
 {
   "name": "solhint-plugin-defi-wonderland",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "DeFi Wonderland's best practices Solhint plugin",
   "keywords": [
     "solhint",
