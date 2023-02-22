@@ -7,6 +7,7 @@ import { InterfaceStartsWithIChecker } from './interface-starts-with-i';
 import { NamedReturnValuesChecker } from './named-return-values';
 import { NonStateVarsLeadingUnderscoreChecker } from './non-state-vars-leading-underscore';
 import { StructNameCamelCaseChecker } from './struct-name-camelcase';
+import { WonderVarNameMixedcaseChecker } from './wonder-var-name-mixedcase';
 
 const rules: typeof Rule[] = [
   ContractDataOrderChecker,
@@ -18,6 +19,7 @@ const rules: typeof Rule[] = [
   NamedReturnValuesChecker,
   NonStateVarsLeadingUnderscoreChecker,
   StructNameCamelCaseChecker,
+  WonderVarNameMixedcaseChecker,
 ];
 
 export = rules;

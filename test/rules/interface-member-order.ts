@@ -7,7 +7,7 @@ const config = {
 };
 
 const interfaceName = 'ITest';
-const errorMessage = `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Functions`;
+const errorMessage = `The order of members in the interface ${interfaceName} interfaces should be: Events, Errors, Structs, Enums, Functions`;
 
 describe('Linter - interface-member-order', () => {
   it('should raise error when errors first than events', () => {
@@ -26,6 +26,13 @@ describe('Linter - interface-member-order', () => {
     assert.ok(report.messages[0].message == errorMessage);
   });
 
+  it('should raise error when enums first than structs', () => {
+    const code = interfaceWith(interfaceName, 'enum TestEnum { A, B } struct TestStruct { uint256 data; }');
+    const report = processStr(code, config);
+    assert.equal(report.errorCount, 1);
+    assert.ok(report.messages[0].message == errorMessage);
+  });
+
   it('should raise error when functions first than structs', () => {
     const code = interfaceWith(interfaceName, 'function testFunction(){} struct TestStruct { uint256 data; }');
     const report = processStr(code, config);
@@ -34,10 +41,17 @@ describe('Linter - interface-member-order', () => {
     assert.ok(report.messages[0].message == errorMessage);
   });
 
-  it('should not raise error for interface member order events, errors, structs and functions', () => {
+  it('should raise an error when funtion first than enums', () => {
+    const code = interfaceWith(interfaceName, 'function testFunction(){} enum TestEnum { A, B }');
+    const report = processStr(code, config);
+    assert.equal(report.errorCount, 1);
+    assert.ok(report.messages[0].message == errorMessage);
+  });
+
+  it('should not raise error for interface member order events, errors, structs, enums and functions', () => {
     const code = interfaceWith(
       interfaceName,
-      'event TestEvent(); error TestError(); struct TestStruct { uint256 data; } function testFunction(){}'
+      'event TestEvent(); error TestError(); struct TestStruct { uint256 data; } enum TestEnum { A, B } function testFunction(){}'
     );
     const report = processStr(code, config);
 
