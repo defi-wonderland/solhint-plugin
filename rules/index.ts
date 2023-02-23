@@ -8,7 +8,6 @@ import { NamedReturnValuesChecker } from './named-return-values';
 import { NonStateVarsLeadingUnderscoreChecker } from './non-state-vars-leading-underscore';
 import { StructNameCamelCaseChecker } from './struct-name-camelcase';
 import { WonderVarNameMixedcaseChecker } from './wonder-var-name-mixedcase';
-import { WonderPrivateVarsLeadingUnderscoreChecker } from './wonder-private-vars-leading-underscore';
 
 const rules: typeof Rule[] = [
   ContractDataOrderChecker,
@@ -21,7 +20,6 @@ const rules: typeof Rule[] = [
   NonStateVarsLeadingUnderscoreChecker,
   StructNameCamelCaseChecker,
   WonderVarNameMixedcaseChecker,
-  WonderPrivateVarsLeadingUnderscoreChecker,
 ];
 
 export = rules;
