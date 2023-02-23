@@ -38,13 +38,13 @@ export class InterfaceMemberOrderChecker extends BaseChecker implements Rule {
           unOrderedMembers.push(member);
           errors.push(member);
           break;
+        case 'EnumDefinition':
+          unOrderedMembers.push(member);
+          enums.push(member);
         case 'StructDefinition':
           unOrderedMembers.push(member);
           structs.push(member);
           break;
-        case 'EnumDefinition':
-          unOrderedMembers.push(member);
-          enums.push(member);
         case 'FunctionDefinition':
           unOrderedMembers.push(member);
           functions.push(member);
@@ -54,13 +54,13 @@ export class InterfaceMemberOrderChecker extends BaseChecker implements Rule {
       }
     });
 
-    const orderedMembers = [...events, ...errors, ...structs, ...enums, ...functions];
+    const orderedMembers = [...events, ...errors, ...enums, ...structs, ...functions];
 
     const misorderedMember = unOrderedMembers.find((unOrderedMember, index) => {
       return unOrderedMember !== orderedMembers[index];
     });
     if (misorderedMember) {
-      this.error(node, `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Structs, Enums, Functions`);
+      this.error(node, `The order of members in the interface ${node.name} interfaces should be: Events, Errors, Enums, Structs, Functions`);
     }
   }
 }
