@@ -28,29 +28,22 @@ export class InterfaceMemberOrderChecker extends BaseChecker implements Rule {
     const enums: any[] = [];
     const functions: any[] = [];
 
-    interfaceMembers.forEach((member: any) => {
-      switch (member.type) {
-        case 'EventDefinition':
-          unOrderedMembers.push(member);
-          events.push(member);
-          break;
-        case 'CustomErrorDefinition':
-          unOrderedMembers.push(member);
-          errors.push(member);
-          break;
-        case 'EnumDefinition':
-          unOrderedMembers.push(member);
-          enums.push(member);
-        case 'StructDefinition':
-          unOrderedMembers.push(member);
-          structs.push(member);
-          break;
-        case 'FunctionDefinition':
-          unOrderedMembers.push(member);
-          functions.push(member);
-          break;
-        default:
-          break;
+    interfaceMembers.forEach((member) => {
+      if (member.type === 'EventDefinition') {
+        unOrderedMembers.push(member);
+        events.push(member);
+      } else if (member.type === 'CustomErrorDefinition') {
+        unOrderedMembers.push(member);
+        errors.push(member);
+      } else if (member.type === 'EnumDefinition') {
+        unOrderedMembers.push(member);
+        enums.push(member);
+      } else if (member.type === 'StructDefinition') {
+        unOrderedMembers.push(member);
+        structs.push(member);
+      } else if (member.type === 'FunctionDefinition') {
+        unOrderedMembers.push(member);
+        functions.push(member);
       }
     });
 
