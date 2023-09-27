@@ -51,7 +51,12 @@ describe('Linter - interface-member-order', () => {
   it('should not raise error for interface member order events, errors, enums, structs, and functions', () => {
     const code = interfaceWith(
       interfaceName,
-      'event TestEvent(); error TestError(); enum TestEnum { A, B } struct TestStruct { uint256 data; } function testFunction(){}'
+      `event TestEvent(); event TestEvent2();
+       error TestError(); error TestError2();
+       enum TestEnum { A, B } enum TestEnum2 { A, B }
+       struct TestStruct { uint256 data; } struct TestStruct2 { uint256 data; }
+       function testFunction(){} function testFunction2(){}
+      `
     );
     const report = processStr(code, config);
 
