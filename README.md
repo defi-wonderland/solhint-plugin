@@ -4,6 +4,9 @@
 ![Tests](https://github.com/defi-wonderland/solhint-plugin/actions/workflows/unit-tests.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/defi-wonderland/solhint-plugin/blob/main/LICENSE)
 
+## Deprecated
+The plugin has been deprecated, we recommend using [`solhint-community`](https://github.com/solhint-community/solhint-community) instead.
+
 ## Overview
 
 This custom Solhint Plugin aims to contain all of the Solidity best practices implemented at [DeFi Wonderland](https://defi.sucks).
